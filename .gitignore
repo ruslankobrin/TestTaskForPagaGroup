@@ -25,6 +25,7 @@ media
 *.so
 
 # Distribution / packaging
+env.sh
 .Python
 build/
 develop-eggs/
@@ -44,6 +45,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+profileapp/migrations/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
