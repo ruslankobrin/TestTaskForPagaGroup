@@ -1,15 +1,17 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.views import generic
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, status
+from rest_framework.response import Response
 
 from profileapp.models import Profile
+from profileapp.permissions import SpecialPermission
 from profileapp.serializers import ProfileSerializer
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, permissions.IsAdminUser]
+    permission_classes = [SpecialPermission]
 
     def put(self, request, *args, **kwargs):
         return self.update(request, *args, **kwargs)
