@@ -1,7 +1,12 @@
-from django.urls import path
-from .views import *
+from django.urls import path, include
+from rest_framework import routers
 
-app_name = 'profileapp'
+from . import views
+
+router = routers.DefaultRouter()
+router.register(r'profiles', views.ProfileViewSet, basename='profile')
 
 urlpatterns = [
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
