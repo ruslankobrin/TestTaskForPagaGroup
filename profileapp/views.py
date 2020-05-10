@@ -1,3 +1,5 @@
+from django.contrib.auth.forms import UserCreationForm
+from django.views import generic
 from rest_framework import viewsets, permissions
 
 from profileapp.models import Profile
@@ -14,3 +16,9 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+
+
+class SignUp(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = '../'
+    template_name = 'signup.html'
